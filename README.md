@@ -5,4 +5,4 @@ Requisitos:
 
 • pygame 2.6.0
 
-• python 3.12.3 (versões mais recentes não funcionam
+• python 3.12.3 (versões mais recentes não funcionam)
