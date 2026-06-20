@@ -3,9 +3,9 @@ from config import AMARELO_PASSARO, PRETO
 
 class Passaro:
     def __init__(self, largura, altura):
-        self.x = int(largura * 0.15)  # Movido ligeiramente para a frente para melhor visibilidade
+        self.x = int(largura * 0.15)  
         self.y = altura // 2
-        self.raio = int(altura * 0.045)  # Ajuste fino no raio
+        self.raio = int(altura * 0.045)  
         
         self.gravidade = altura * 0.00075
         self.impulso = -altura * 0.0125
@@ -41,7 +41,7 @@ class Passaro:
 
     def desenhar(self, tela):
         if self.usar_imagens:
-            if (self.tempo_animacao // 8) % 2 == 0:  # Batida de asas ligeiramente mais rápida
+            if (self.tempo_animacao // 8) % 2 == 0:  
                 imagem_atual = self.img1
             else:
                 imagem_atual = self.img2
