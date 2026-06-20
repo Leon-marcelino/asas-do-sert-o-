@@ -9,7 +9,7 @@ class Cano:
         self.x = largura
         self.largura_cano = int(largura * 0.16)
         
-        # Espaço vertical entre os canos adaptável
+       
         self.espaco = int(altura * 0.25)
         
         self.altura_minima = int(altura * 0.1)
