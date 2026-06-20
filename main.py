@@ -87,7 +87,7 @@ class Jogo:
                         self.passaro.pular()
                         
                     elif self.estado == "GAME_OVER":
-                        # Lógica de cliques ajustada para os novos botões do Game Over
+                        
                         if self.interface.rect_reiniciar.collidepoint(pos_mouse):
                             self.resetar_jogo()
                             self.estado = "JOGANDO"
