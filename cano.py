@@ -18,7 +18,6 @@ class Cano:
         self.velocidade = velocidade_base
         self.passou = False
 
-        # Configuração das imagens do obstáculo
         self.usar_imagem = False
         if img_base:
             try:
@@ -26,7 +25,7 @@ class Cano:
                 altura_inf = self.altura_tela - self.base
                 self.img_inf = pygame.transform.scale(img_base, (self.largura_cano, altura_inf))
                 
-                # Cano Superior: Vira de ponta-cabeça e redimensiona do teto até o vão
+                # Cano Superior
                 img_invertida = pygame.transform.flip(img_base, False, True)
                 self.img_sup = pygame.transform.scale(img_invertida, (self.largura_cano, self.topo))
                 
@@ -43,7 +42,6 @@ class Cano:
             tela.blit(self.img_sup, (self.x, 0))
             tela.blit(self.img_inf, (self.x, self.base))
         else:
-            # Sistema de segurança: Desenha os retângulos caso o arquivo falte
             pygame.draw.rect(tela, VERDE_CANO, (self.x, 0, self.largura_cano, self.topo))
             pygame.draw.rect(tela, PRETO, (self.x, 0, self.largura_cano, self.topo), 2)
             
