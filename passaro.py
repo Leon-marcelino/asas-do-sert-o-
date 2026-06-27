@@ -2,7 +2,6 @@ import pygame
 from config import AMARELO_PASSARO, PRETO
 
 class Passaro:
-    # Agora a classe recebe o caminho das imagens como parâmetro!
     def __init__(self, largura, altura, img_path1, img_path2):
         self.x = int(largura * 0.15)
         self.y = altura // 2
