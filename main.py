@@ -149,7 +149,7 @@ class Jogo:
                 
                 self.timer_cano += 1
                 if self.timer_cano >= self.frequencia_canos:
-                    # Agora passamos a imagem do obstáculo carregada para o Cano!
+                 
                     self.canos.append(Cano(self.largura, self.altura, self.velocidade_jogo, self.espaco_canos_atual, self.obstaculo_img_atual))
                     self.timer_cano = 0
                 
