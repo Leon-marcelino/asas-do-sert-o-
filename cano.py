@@ -22,7 +22,7 @@ class Cano:
         self.usar_imagem = False
         if img_base:
             try:
-                # Cano Inferior: Redimensiona a imagem para preencher do vão até o chão
+                # Cano Inferior
                 altura_inf = self.altura_tela - self.base
                 self.img_inf = pygame.transform.scale(img_base, (self.largura_cano, altura_inf))
                 
