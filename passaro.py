@@ -2,8 +2,9 @@ import pygame
 from config import AMARELO_PASSARO, PRETO
 
 class Passaro:
-    def __init__(self, largura, altura):
-        self.x = int(largura * 0.15)  
+    # Agora a classe recebe o caminho das imagens como parâmetro!
+    def __init__(self, largura, altura, img_path1, img_path2):
+        self.x = int(largura * 0.15)
         self.y = altura // 2
         self.raio = int(altura * 0.045)  
         
@@ -13,15 +14,15 @@ class Passaro:
 
         tamanho_imagem = self.raio * 2
         try:
-            self.img1 = pygame.image.load("16514-removebg-preview.png").convert_alpha()
+            self.img1 = pygame.image.load(img_path1).convert_alpha()
             self.img1 = pygame.transform.scale(self.img1, (tamanho_imagem, tamanho_imagem))
             
-            self.img2 = pygame.image.load("16516-removebg-preview.png").convert_alpha()
+            self.img2 = pygame.image.load(img_path2).convert_alpha()
             self.img2 = pygame.transform.scale(self.img2, (tamanho_imagem, tamanho_imagem))
             
             self.usar_imagens = True
         except pygame.error:
-            print("Aviso: Imagens do pássaro não encontradas. Usando modelo padrão quadrado/circular.")
+            print(f"Aviso: Imagens não encontradas ({img_path1}, {img_path2}).")
             self.usar_imagens = False
 
         self.tempo_animacao = 0
@@ -41,7 +42,7 @@ class Passaro:
 
     def desenhar(self, tela):
         if self.usar_imagens:
-            if (self.tempo_animacao // 8) % 2 == 0:  
+            if (self.tempo_animacao // 8) % 2 == 0:
                 imagem_atual = self.img1
             else:
                 imagem_atual = self.img2
@@ -50,5 +51,5 @@ class Passaro:
             pos_y = self.y - self.raio
             tela.blit(imagem_atual, (pos_x, pos_y))
         else:
-            pygame.draw.circle(tela, AMARELO_PASSARO, (self.x, self.y), self.raio)
-            pygame.draw.circle(tela, PRETO, (self.x, self.y), self.raio, 2)
+            pygame.draw.circle(tela, AMARELO_PASSARO, (int(self.x), int(self.y)), self.raio)
+            pygame.draw.circle(tela, PRETO, (int(self.x), int(self.y)), self.raio, 2)
