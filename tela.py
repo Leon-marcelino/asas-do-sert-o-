@@ -11,7 +11,7 @@ class InterfaceGrafica:
         self.calcular_posicoes_botoes()
 
     def calcular_posicoes_botoes(self):
-        """Define as áreas de clique (hitboxes) de todos os botões do sistema"""
+        """Define as áreas de clique de todos os botões do sistema"""
         largura_btn = int(self.largura * 0.60)
         altura_btn = int(self.altura * 0.11)
         x_centro = (self.largura - largura_btn) // 2
@@ -25,7 +25,7 @@ class InterfaceGrafica:
         else:
             self.rect_jogar = self.rect_sair = pygame.Rect(0, 0, 0, 0)
             
-        # Hitboxes da tela de Níveis (Grade 2x2 simétrica)
+        # Hitboxes da tela de Níveis
         tamanho_btn = int(self.largura * 0.25)
         x_esquerda = int(self.largura * 0.18)
         x_direita = int(self.largura * 0.57)
