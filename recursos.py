@@ -4,7 +4,6 @@ from config import *
 class GerenciadorRecursos:
     @staticmethod
     def tocar_musica(nivel):
-        """Muda a música baseado no nível jogado"""
         pygame.mixer.init()
         if nivel == 1:
             arquivo = ARQUIVO_MUSICA_1
@@ -24,7 +23,6 @@ class GerenciadorRecursos:
 
     @staticmethod
     def carregar_fundo_nivel(largura, altura, nivel):
-        """Carrega o fundo específico da fase"""
         if nivel == 1:
             arquivo = ARQUIVO_FUNDO_1
         elif nivel == 2:
@@ -43,7 +41,6 @@ class GerenciadorRecursos:
 
     @staticmethod
     def carregar_chao_nivel(largura, altura, nivel):
-        """Carrega o chão específico da fase"""
         if nivel == 1:
             arquivo = ARQUIVO_CHAO_1
         elif nivel == 2:
@@ -62,7 +59,6 @@ class GerenciadorRecursos:
 
     @staticmethod
     def carregar_obstaculo_nivel(nivel):
-        """Carrega a imagem base do obstáculo para o nível atual"""
         if nivel == 1:
             arquivo = ARQUIVO_OBSTACULO_1
         elif nivel == 2:
@@ -80,7 +76,6 @@ class GerenciadorRecursos:
 
     @staticmethod
     def carregar_recursos_menu(largura, altura):
-        """Carrega os elementos visuais do menu, níveis e game over"""
         recursos = {}
         try:
             fundo_menu = pygame.image.load(ARQUIVO_MENU_FUNDO).convert()
