@@ -33,7 +33,7 @@ ARQUIVO_CHAO_1 = "chao.jpeg"
 ARQUIVO_MUSICA_1 = "musica_sertao.mp3"
 ARQUIVO_PASSARO1_N1 = "carcara.png"
 ARQUIVO_PASSARO2_N1 = "carcara2.png"
-ARQUIVO_OBSTACULO_1 = "cano1.png"  # Nomeie sua imagem do obstáculo 1 assim
+ARQUIVO_OBSTACULO_1 = "cano1.png"
 
 # ==========================================
 # ASSETS NÍVEL 2 (Cidade - Pomba)
@@ -43,7 +43,7 @@ ARQUIVO_CHAO_2 = "chao2.png"
 ARQUIVO_MUSICA_2 = "musica2.mp3"
 ARQUIVO_PASSARO1_N2 = "pomba1.png"
 ARQUIVO_PASSARO2_N2 = "pomba2.png"
-ARQUIVO_OBSTACULO_2 = "cano2.png"  # Nomeie sua imagem do obstáculo 2 assim
+ARQUIVO_OBSTACULO_2 = "cano2.png" 
 
 # ==========================================
 # ASSETS NÍVEL 3 (Caatinga - Acauã)
