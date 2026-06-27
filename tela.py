@@ -11,12 +11,12 @@ class InterfaceGrafica:
         self.calcular_posicoes_botoes()
 
     def calcular_posicoes_botoes(self):
-        """Define as áreas de clique (hitboxes) dos botões no menu e no game over"""
+        """Define as áreas de clique (hitboxes) de todos os botões do sistema"""
         largura_btn = int(self.largura * 0.60)
         altura_btn = int(self.altura * 0.11)
         x_centro = (self.largura - largura_btn) // 2
         
-        # Hitboxes do Menu Inicial (Mais afastados verticalmente)
+        # Hitboxes do Menu Inicial
         if self.assets_menu['btn_jogar']:
             y_base = int(self.altura * 0.50)
             espacamento = int(self.altura * 0.16)   
@@ -25,11 +25,21 @@ class InterfaceGrafica:
         else:
             self.rect_jogar = self.rect_sair = pygame.Rect(0, 0, 0, 0)
             
+        # Hitboxes da tela de Níveis (Grade 2x2 simétrica)
+        tamanho_btn = int(self.largura * 0.25)
+        x_esquerda = int(self.largura * 0.18)
+        x_direita = int(self.largura * 0.57)
+        y_linha1 = int(self.altura * 0.35)
+        y_linha2 = int(self.altura * 0.55)
+        
+        self.rect_btn1 = pygame.Rect(x_esquerda, y_linha1, tamanho_btn, tamanho_btn)
+        self.rect_btn2 = pygame.Rect(x_direita, y_linha1, tamanho_btn, tamanho_btn)
+        self.rect_btn3 = pygame.Rect(x_esquerda, y_linha2, tamanho_btn, tamanho_btn)
+        self.rect_btn4 = pygame.Rect(x_direita, y_linha2, tamanho_btn, tamanho_btn)
+            
         # Hitboxes da tela de Game Over
         painel_y = (self.altura - int(self.altura * 0.52)) // 2
         painel_altura = int(self.altura * 0.52)
-        
-        # Centraliza o botão reiniciar e o botão de voltar (que no seu main.py atua como sair)
         self.rect_reiniciar = pygame.Rect(x_centro, painel_y + int(painel_altura * 0.42), largura_btn, altura_btn)
         self.rect_sair_gameover = pygame.Rect(x_centro, painel_y + int(painel_altura * 0.68), largura_btn, altura_btn)
 
@@ -52,31 +62,42 @@ class InterfaceGrafica:
             self.tela.blit(self.assets_menu['btn_jogar'], self.rect_jogar.topleft)
         if self.assets_menu['btn_sair']:
             self.tela.blit(self.assets_menu['btn_sair'], self.rect_sair.topleft)
+
+    def desenhar_niveis(self):
+        """Desenha a tela de seleção de níveis com os 4 botões inseridos"""
+        if self.assets_menu.get('fundo_niveis'):
+            self.tela.blit(self.assets_menu['fundo_niveis'], (0, 0))
+        else:
+            self.tela.fill(AZUL_CEU)
+            
+        # Desenha os botões numéricos na grade correspondente
+        if self.assets_menu.get('btn_1'):
+            self.tela.blit(self.assets_menu['btn_1'], self.rect_btn1.topleft)
+        if self.assets_menu.get('btn_2'):
+            self.tela.blit(self.assets_menu['btn_2'], self.rect_btn2.topleft)
+        if self.assets_menu.get('btn_3'):
+            self.tela.blit(self.assets_menu['btn_3'], self.rect_btn3.topleft)
+        if self.assets_menu.get('btn_4'):
+            self.tela.blit(self.assets_menu['btn_4'], self.rect_btn4.topleft)
             
     def desenhar_game_over(self, score, high_score):
-        """Desenha a janela de pontuação sobreposta com imagem de título e botões corretos"""
         painel_largura = int(self.largura * 0.85)
         painel_altura = int(self.altura * 0.52)
         painel_x = (self.largura - painel_largura) // 2
         painel_y = (self.altura - painel_altura) // 2
         
-        # Painel de fundo semitransparente
         superficie_painel = pygame.Surface((painel_largura, painel_altura), pygame.SRCALPHA)
         superficie_painel.fill((0, 0, 0, 190))
         self.tela.blit(superficie_painel, (painel_x, painel_y))
         pygame.draw.rect(self.tela, PRETO, (painel_x, painel_y, painel_largura, painel_altura), 3)
         
-        # Desenha a imagem de Voltar para o Menu no topo do painel
         if self.assets_menu['img_gameover']:
             img_x = (self.largura - self.assets_menu['img_gameover'].get_width()) // 2
             self.tela.blit(self.assets_menu['img_gameover'], (img_x, painel_y + int(painel_altura * 0.05)))
         
-        # Estatísticas
         self.desenhar_texto(f"Pontos: {score}  |  Recorde: {high_score}", BRANCO, self.largura // 2, painel_y + int(painel_altura * 0.28), centralizado=True)
         
-        # Desenhar os botões clicáveis do Game Over
         if self.assets_menu['btn_reiniciar']:
             self.tela.blit(self.assets_menu['btn_reiniciar'], self.rect_reiniciar.topleft)
         if self.assets_menu['btn_sair']:
-            # Desenhando o botão de sair na posição correta
             self.tela.blit(self.assets_menu['btn_sair'], self.rect_sair_gameover.topleft)
